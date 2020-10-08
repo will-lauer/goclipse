@@ -11,7 +11,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho-version>0.26.0</tycho-version>
+		<tycho-version>2.0.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<parentBaseDir>${project.parent.basedir}</parentBaseDir>
@@ -48,13 +48,13 @@
 	<repositories>
 		<repository>
 			<layout>p2</layout>
-			<id>neon</id>
-			<url>http://download.eclipse.org/releases/neon</url>
+			<id>2020-09</id>
+			<url>http://download.eclipse.org/releases/2020-09</url>
 		</repository>
 		<repository>
 			<layout>p2</layout>
 			<id>orbit</id>
-			<url>http://archive.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/</url>
+			<url>https://download.eclipse.org/tools/orbit/downloads/drops/R20200831200620/repository</url>
 		</repository>
 	</repositories>
 	
