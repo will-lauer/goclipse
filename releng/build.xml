@@ -62,7 +62,7 @@ overwriting the previous one. (This removes history from the git repo it is push
 	<target name="prepareProjectSite.makeDir">
 	</target>
 	
-	<target name="prepareProjectSite" depends="prepareProjectSite.initGit">
+	<target name="prepareProjectSite" depends="prepareProjectSite.initGit,prepareProjectSite.initBranch">
 	</target>
 	
 	<target name="copyProjectSiteSkeleton">
@@ -102,10 +102,14 @@ overwriting the previous one. (This removes history from the git repo it is push
 	<target name="prepareProjectSite.initGit" if="projectSiteGitURL" depends="clean">
 		<condition property="prepareProjectSite.initGit._gitArg" 
 			value="init" 
-			else="clone --depth 1 -n ${projectSiteGitURL} ${_projectSiteDir}">
+			else="clone --depth 1 -n -b ${projectSiteBranch} ${projectSiteGitURL} ${_projectSiteDir}">
 			<istrue value="${resetGitHistory}"/>
 		</condition>
 		<runGit dir="${_projectSiteDir}" argLine="${prepareProjectSite.initGit._gitArg}" />
+	</target>
+	
+	<target name="prepareProjectSite.initBranch" if="resetGitHistory">
+		<runGit dir="${_projectSiteDir}" argLine="switch -C ${projectSiteBranch}"/>
 	</target>
 	
 	<target name="_commitProjectSiteGitChanges">
@@ -124,7 +128,9 @@ overwriting the previous one. (This removes history from the git repo it is push
 		    <istrue value="${resetGitHistory}"/>
 		</condition>
 		
-		<runGit dir="${_projectSiteDir}" argLine="push ${projectSiteGitURL} ${PublishProjectSite._gitArg}" />
+		<runGit dir="${_projectSiteDir}" argLine="push ${projectSiteGitURL} ${PublishProjectSite._gitArg}">
+			<arg value="${projectSiteBranch}"/>
+		</runGit>
 	    <runGit dir="${_projectSiteDir}" argLine="push ${projectSiteGitURL} ${PublishProjectSite._gitArg}">
 	    	<arg value="${releaseTag}"/>
 	    </runGit>
