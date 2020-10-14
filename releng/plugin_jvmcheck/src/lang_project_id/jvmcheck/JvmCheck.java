@@ -30,10 +30,14 @@ public class JvmCheck implements IStartup, JvmCheckConstants_Actual {
 	    if(versionSegments.length < 2) {
 	    	return -1;
 	    }
-	    String javaVersionStr = versionSegments[1];
+	    String javaMajorVersionStr = versionSegments[0];
+	    String javaMinorVersionStr = versionSegments[1];
 		
 	    try {
-			return Integer.parseInt(javaVersionStr);
+			int minor = Integer.parseInt(javaMinorVersionStr);
+			int major = Integer.parseInt(javaMajorVersionStr);
+			
+			return major > 1 ? major : minor;
 		} catch(NumberFormatException e) {
 			return -1;
 		}

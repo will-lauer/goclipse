@@ -2,7 +2,7 @@
 <feature
       id="goclipse_feature"
       label="%featureName"
-      version="0.16.1.qualifier"
+      version="0.16.2.qualifier"
       provider-name="%providerName"
       plugin="com.googlecode.goclipse.jvmcheck">
 
@@ -19,9 +19,9 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.platform" version="4.5.0" match="compatible"/>
-      <import feature="org.eclipse.cdt.gnu.dsf" version="9.0.0" match="compatible"/>
-      <import feature="org.eclipse.cdt.platform" version="9.0.0" match="compatible"/>
+      <import feature="org.eclipse.platform" version="4.17.0" match="compatible"/>
+      <import feature="org.eclipse.cdt.gnu.dsf" version="10.0.0" match="compatible"/>
+      <import feature="org.eclipse.cdt.platform" version="10.0.0" match="compatible"/>
    </requires>
 
    <plugin
